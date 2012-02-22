@@ -1,0 +1,6 @@
+# python droppings
+*.pyc
+*.swp
+
+# application specific droppings
+*.db
