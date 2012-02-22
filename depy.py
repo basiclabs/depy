@@ -81,3 +81,9 @@ class Actor(object):
         row = self.c.fetchone()
 
         self.name = row[1]
+
+class Outcome:
+    DIALOGUE = 0
+    SCENE = 1
+    FIGHT = 2
+    GAMEEND = 3
