@@ -30,7 +30,7 @@ class Scene(object):
 
         self.setup_text = row[1]
         self.location = Location(row[2], self.c)
-        self.initial_dialogue = row[3]
+        self.initial_dialogue = Dialogue(row[3], self.c)
 
         self.c.execute("select * from Actors_Scenes where sceneId=?", args)
         rows = self.c.fetchall()
@@ -52,11 +52,11 @@ class Location(object):
 class Dialogue(object):
     def __init__(self, dialogue_ref=None, c=None):
         self.c = c
-        args = (dialgue_ref,)
-        self.c.execute("select * from Dialgoue where id=?", args)
+        args = (dialogue_ref,)
+        self.c.execute("select * from Dialogue where id=?", args)
         row = self.c.fetchone()
 
-        self.actor = row[1]
+        self.actor = Actor(row[1], self.c)
         self.text = row[2]
 
         self.c.execute("select * from Options where dialogueId=?", args)
